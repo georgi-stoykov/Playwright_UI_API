@@ -15,7 +15,7 @@ export default class SignInPage extends BasePage {
         this.submitBtn = page.getByRole("button", { name: "Login" });
     }
 
-    async login(email: string, password: string) {
+    async loginAsync(email: string, password: string) {
         await this.email.pressSequentially(email);
         await this.password.pressSequentially(password);
         await this.submitBtn.click();

@@ -6,9 +6,9 @@ setup(
     { tag: "@setup" },
     async ({ page, context, homePage, signInPage }) => {
         const customerAuthFilePath = "../../../utils/customerAuthToken.json";
-        await homePage.navigate();
+        await homePage.navigateAsync();
         await homePage.navigationBar.signInButton.click();
-        await signInPage.login(Env.CustomerEmail, Env.CustomerPassword);
+        await signInPage.loginAsync(Env.CustomerEmail, Env.CustomerPassword);
         await context.storageState({ path: customerAuthFilePath });
         page.close();
     }

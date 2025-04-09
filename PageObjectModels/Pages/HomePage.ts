@@ -3,11 +3,11 @@ import BasePage from "./BasePage";
 import Env from "../../utils/Env";
 
 export default class HomePage extends BasePage {
-  constructor(page: Page) {
-    super(page);
-  }
+    constructor(page: Page) {
+        super(page);
+    }
 
-  override async navigate(): Promise<void> {
-    this.page.goto(Env.BaseUrl);
-  }
+    override async navigateAsync(): Promise<void> {
+        this.page.goto(Env.BaseUrl);
+    }
 }
