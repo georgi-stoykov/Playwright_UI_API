@@ -2,19 +2,18 @@
 import { defineConfig, devices } from "@playwright/test";
 import fileSystem from "fs";
 
-
-import dotenv from 'dotenv';
-import path from 'path';
+import dotenv from "dotenv";
+import path from "path";
 // Check if .env.local exists and load it, otherwise load .env
-const envPath = path.resolve(__dirname, '.env.local');
+const envPath = path.resolve(__dirname, ".env.local");
 const envLocalExists = fileSystem.existsSync(envPath);
 
 if (envLocalExists) {
-  console.log('Loading .env.local file');
-  dotenv.config({ path: envPath, override: true });
+    console.log("Loading .env.local file");
+    dotenv.config({ path: envPath, override: true });
 } else {
-  console.log('Loading default .env file');
-  dotenv.config();
+    console.log("Loading default .env file");
+    dotenv.config();
 }
 
 /**
@@ -33,10 +32,14 @@ export default defineConfig({
 
         /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
         trace: "on-first-retry",
-        headless: false
+        headless: false,
     },
 
     projects: [
+        {
+            name: "setup",
+            testMatch: /.*\.setup\.ts/,
+        },
         {
             name: "chromium",
             use: { ...devices["Desktop Chrome"] },

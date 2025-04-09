@@ -1,10 +1,10 @@
 import { Locator, Page } from "@playwright/test";
 import NavigationBar from "../Components/NavigationBar";
 
-export default class BasePage {
+export default abstract class BasePage {
   protected readonly page: Page;
-  readonly navigationBar : NavigationBar;
-  
+  readonly navigationBar: NavigationBar;
+
   constructor(page: Page) {
     this.page = page;
     this.navigationBar = new NavigationBar(page);
