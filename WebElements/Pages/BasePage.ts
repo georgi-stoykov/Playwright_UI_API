@@ -1,16 +1,20 @@
-// import { locator, Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
+import NavigationBar from "../Components/NavigationBar";
 
-// export default class BasePage {
-//   page: Page;
-//   constructor(page: Page) {
-//     this.page = page;
-//   }
+export default class BasePage {
+  protected readonly page: Page;
+  readonly navigationBar : NavigationBar;
+  
+  constructor(page: Page) {
+    this.page = page;
+    this.navigationBar = new NavigationBar(page);
+  }
 
-//   async navigate(url: string) {
-//     await this.page.goto(url);
-//   }
+  async navigate(url: string) {
+    await this.page.goto(url);
+  }
 
-//   async getTitle() {
-//     return this.page.title();
-//   }
-// }
+  async getTitle() {
+    return this.page.title();
+  }
+}
