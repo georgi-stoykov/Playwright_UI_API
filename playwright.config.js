@@ -1,14 +1,11 @@
 // @ts-check
 import { defineConfig, devices } from "@playwright/test";
-import fileSystem from "fs";
-
+import PathHelper from "./utils/PathHelper";
 import dotenv from "dotenv";
-import path from "path";
-// Check if .env.local exists and load it, otherwise load .env
-const envPath = path.resolve(__dirname, ".env.local");
-const envLocalExists = fileSystem.existsSync(envPath);
 
-if (envLocalExists) {
+const envPath = PathHelper.buildFilePathFromRoot([".env.local"]);
+
+if (PathHelper.checkFileExists(envPath)) {
     console.log("Loading .env.local file");
     dotenv.config({ path: envPath, override: true });
 } else {
@@ -42,6 +39,7 @@ export default defineConfig({
         },
         {
             name: "chromium",
+            dependencies: ["setup"],
             use: { ...devices["Desktop Chrome"] },
         },
     ],

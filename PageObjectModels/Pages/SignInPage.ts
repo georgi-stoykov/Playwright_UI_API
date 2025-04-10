@@ -19,8 +19,5 @@ export default class SignInPage extends BasePage {
         await this.email.pressSequentially(email);
         await this.password.pressSequentially(password);
         await this.submitBtn.click();
-
-        const accountUrl = new URL("account", Env.BaseUrl).toString();
-        await expect(this.page).toHaveURL(accountUrl);
     }
 }
