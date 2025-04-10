@@ -4,13 +4,13 @@ import PathHelper from "../../../utils/PathHelper";
 
 setup(
     "Authenticate user as customer",
-    { tag: "@setup" },
+    { tag: ["@setup", "@ui"] },
     async ({ page, context, homePage, signInPage }) => {
         await homePage.navigateAsync();
         await homePage.navigationBar.signInButton.click();
         await signInPage.loginAsync(Env.CustomerEmail, Env.CustomerPassword);
 
-        const accountUrl = new URL("account", Env.BaseUrl).toString();
+        const accountUrl = new URL("account", Env.BaseWebUrl).toString();
         await expect(page).toHaveURL(accountUrl);
 
         // store cookies

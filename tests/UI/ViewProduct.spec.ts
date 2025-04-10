@@ -5,7 +5,7 @@ test.use({ storageState: PathHelper.ConstantPaths.COOKIE });
 
 test.describe(
     "View single product information",
-    { tag: "@authenticated" },
+    { tag: ["@authenticated", "@ui"] },
     () => {
         test.beforeEach(async ({ homePage }) => {
             await homePage.navigateAsync();

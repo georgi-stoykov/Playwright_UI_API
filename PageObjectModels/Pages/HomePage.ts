@@ -8,6 +8,6 @@ export default class HomePage extends BasePage {
     }
 
     override async navigateAsync(): Promise<void> {
-        this.page.goto(Env.BaseUrl);
+        this.page.goto(Env.BaseWebUrl);
     }
 }
